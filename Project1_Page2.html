@@ -1,26 +1,51 @@
 <!DOCTYPE html>
 
 <html>
+
 	<head>
+	
 		<title>rObUx FoR fReE</title>
 		
 		<style>
-		
-		
-		
+			
+			body
+			{
+				background-color:lightblue;
+			}
+			
+			h1
+			{
+				font-family: "Papyrus";
+			}
+			
+			p
+			{
+				font-family: "Papyrus";
+			}
+			
+			ol
+			{
+				font-family: "Papyrus";
+			}
+			
+			form
+			{
+				font-family: "Papyrus";
+			}
+	
 		</style>
 	
 	</head>
 	
 	<body>
-		<h1>Fill out form below</h1>
+		<h1>Unlimited Free Robux Generator</h1>
 		
 		<p>Okay so guys all I need you to do for you to get your free robux is</p>
 		
 		<ol>
 			<li>Input your first name</li>
 			<li>Input your second name</li>
-			<li>Input your EIR code</li>
+			<li>Input your eir code</li>
 			<li>Input your credit card number</li>
 			<li>Input your credit card details</li>
 			<li>Clear your search history</li>
@@ -37,24 +62,405 @@
 			<br>
 			Credit Card Number: <input type = "text" id = "cardNumber" name = "cardNumber">
 			<br>
-			Credit Card Details: <input type = "text" id = "cardPin" name = "cardPin">
+			Credit Card Pin: <input type = "text" id = "cardPin" name = "cardPin">
 			<br>
 			<br>
-			<input type = "button" value = "Submit">
+			<input type = "button" value = "Submit" onClick = "validateResponse()">
 		</form>
-		
-		
+				
 		<script>
+			
+			//Retrieves input from the form
+			//Sets them to variables	
+			var fname = document.getElementById("firstName").value;
+			var lname = document.getElementById("lastName").value;
+			var eirCode = document.getElementById("eirCode").value;
+			var cardNo = document.getElementById("cardNumber").value;
+			var cardPin = document.getElementById("cardPin").value;
+			var space = " ";
+			var quote = "'";
+			
+			//Peculiarity identifying variables
+			var fnameMaxLength = 10;
+			var fnameMinLength = 2;
+			var lnameMaxLength = 10;
+			var lnameMinLength = 2;
+			var eirCodeLength = 7;
+			var cardNoLength = 16;
+			var cardPinLength = 4;
+			var finalResponseDeterminer = 0;
+			
+			//Dialogue identifying variables
+				
+			//First name variables
+			var fnameIsLong = false;
+			var fnameIsShort = false;
+				
+			//Last name variables
+			var lnameIsLong = false;
+			var lnameIsShort = false;
+			
+			//Eir code variables
+			var eirCodeIncorrect = false;
+				
+			//Credit card number variables
+			var cardNoIncorrect = false;
+			var cardNoHasLetters = false;
+				
+			//Credit card pin variables
+			var cardPinIncorrect = false;
+			var cardPinHasLetters = false;
+						
+			function updateVariables()
+			{
+				fname = document.getElementById("firstName").value;
+				lname = document.getElementById("lastName").value;
+				eirCode = document.getElementById("eirCode").value;
+				cardNo = document.getElementById("cardNumber").value;
+				cardPin = document.getElementById("cardPin").value;
+			}
+			
+			function validateResponse()
+			{
+				updateVariables();
+				
+				if (!fname.length == 0 && !lname.length == 0 && !eirCode.length == 0 && !cardNo.length == 0 && !cardPin.length == 0)
+				{
+					changeVariables();
+					respondToForm();
+				}
+			}
+			
+			function changeVariables()
+			{
+												
+				//Checks for peculiarities in input
+				//Sets diaogue variables to true if neccesary
+				
+				//var regex = 0123456789;
+				
+				//Check for first name peculiarities
+				if (fname.length >= fnameMaxLength)
+				{
+					fnameIsLong = true;
+				}
+				
+				if (fname.length <= fnameMinLength)
+				{
+					fnameIsShort = true;
+				}
+				
+				//Check for last name peculiarities
+				if (lname.length >= lnameMaxLength)
+				{
+					lnameIsLong = true;
+				}
+				
+				if (lname.length <= lnameMinLength)
+				{
+					lnameIsShort = true;
+				}
+				
+				//Check for eir code peculiarities
+				if (eirCode.length != eirCodeLength)
+				{
+					eirCodeIncorrect = true;
+				}
+				
+				//Check for credit card number peculiarities
+				if (cardNo.length != cardNoLength)
+				{
+					cardNoIncorrect = true;
+				}
+				
+				if (isNaN(cardNo))
+				{
+					cardNoHasLetters = true;
+				}
+				
+				//Check for credit card pin peculiarities
+				if (cardPin.length != cardPinLength)
+				{
+					cardPinIncorrect = true;
+				}
+				
+				if (isNaN(cardPin))
+				{
+					cardPinHasLetters = true;
+				}
+						
+			}
+			
+			//Introductory dialogue
+			function introDialogue()
+			{
+				alert("Now");
+				alert("Before you are granted your unlimited free robux");
+				alert("I need to read over what you have submitted");
+			}
+			
+			//First name response
+			function fnameDialogue()
+			{	
+				var dialogue1 = "That's a long name";
+				var dialogue2 = "That's a short name";
+				var dialogue3 = "Seems... normal";
+				
+				const fnameDialogueOptions = [dialogue1, dialogue2, dialogue3];
+				
+				alert(fname);
+				
+				if (fnameIsLong)
+				{
+					alert(fnameDialogueOptions[0]);
+					alert(fnameDialogueOptions[2]);
+				}
+				
+				else if (fnameIsShort)
+				{
+					alert(fnameDialogueOptions[1]);
+					alert(fnameDialogueOptions[2]);
+				}
+				
+				else
+				{
+					alert(fnameDialogueOptions[2]);
+				}		
+			}
+			
+			
+			//Last name response
+			function lnameDialogue()
+			{
+				var dialogue1 = "That's a long name";
+				var dialogue2 = "That's a short name";
+				var dialogue3 = "Seems... normal";
+				
+				const lnameDialogueOptions = [dialogue1, dialogue2, dialogue3];
+				
+				alert(lname);
+				
+				if (lnameIsLong)
+				{
+					alert(lnameDialogueOptions[0]);
+					alert(lnameDialogueOptions[2]);
+				}
+				
+				else if (lnameIsShort)
+				{
+					alert(lnameDialogueOptions[1]);
+					alert(lnameDialogueOptions[2]);
+				}				
+				
+				else
+				{
+					alert(lnameDialogueOptions[2]);
+				}
+			}
+			
+			//Eir code response
+			function eirCodeDialogue()
+			{
+				var dialogue1 = "That has the incorrect amount of letters and numbers it is fake";
+				var dialogue2 = "That has the correct amount of letters and numbers I think";
+				
+				const eirCodeDialogueOptions = [dialogue1, dialogue2];
+				
+				alert(eirCode);
+				
+				if (eirCodeIncorrect)
+				{
+					alert(eirCodeDialogueOptions[0]);
+					finalResponseDeterminer += 1;
+				}
+				
+				else
+				{
+					alert(eirCodeDialogueOptions[1]);
+					eirCodeDialogueSequence();
+				}				
+			}
+			
+			//Called when eir code is correct
+			function eirCodeDialogueSequence()
+			{
+				alert("I'm not Irish");
+				alert("Okay");
+				alert("So I do not know");
+				alert("Okay");
+				alert("But I will trust you");
+			}
+			
+			//Card number response
+			function cardNoDialogue()
+			{
+				var dialogue1 = "That has the incorrect amount of digits it is fake";
+				var dialogue2 = "That has the correct amount of digits I think";
+				var dialogue3 = "Why does it have letters";
+							
+				const cardNoDialogueOptions = [dialogue1, dialogue2, dialogue3];
+				
+				alert(cardNo);
+				
+				if (cardNoIncorrect && cardNoHasLetters)
+				{
+					alert(cardNoDialogueOptions[0]);
+					alert(cardNoDialogueOptions[2]);
+					finalResponseDeterminer += 2;
+				}
+				
+				else if (!cardNoIncorrect && cardNoHasLetters)
+				{
+					alert(cardNoDialogueOptions[1]);
+					alert(cardNoDialogueOptions[2]);
+					finalResponseDeterminer += 1;
+				}
+				
+				else if (cardNoIncorrect)
+				{
+					alert(cardNoDialogueOptions[0]);
+					finalResponseDeterminer += 1;
+				}
+				
+				else if (!cardNoIncorrect)
+				{
+					alert(cardNoDialogueOptions[1]);
+				}
+				
+				else 
+				{
+					alert(cardNoDialogueOptions[2]);
+					finalResponseDeterminer += 1;
+				}				
+			}
+			
+			//Card pin response
+			function cardPinDialogue()
+			{
+				var dialogue1 = "That has the incorrect amount of digits it is fake";
+				var dialogue2 = "That has the correct amount of digits I think";
+				var dialogue3 = "Why does it have letters";
+							
+				const cardPinDialogueOptions = [dialogue1, dialogue2, dialogue3];
+				
+				alert(cardPin);
+				
+				if (cardNoIncorrect && cardNoHasLetters)
+				{
+					alert(cardPinDialogueOptions[0]);
+					alert(cardPinDialogueOptions[2]);
+					finalResponseDeterminer += 2;
+				}
+				
+				else if (!cardPinIncorrect && cardPinHasLetters)
+				{
+					alert(cardPinDialogueOptions[1]);
+					alert(cardPinDialogueOptions[2]);
+					finalResponseDeterminer += 1;
+				}
+				
+				else if (cardPinIncorrect)
+				{
+					alert(cardPinDialogueOptions[0]);
+					finalResponseDeterminer += 1;
+				}
+				
+				else if (!cardPinIncorrect)
+				{
+					alert(cardPinDialogueOptions[1]);
+				}
+				
+				else 
+				{
+					alert(cardPinDialogueOptions[2]);
+					finalResponseDeterminer += 1;
+				}
+			}
+			
+			//Final response
+			function finalResponse()
+			{
+				alert("Anyway");
+				
+				if (finalResponseDeterminer == 0)
+				{
+					finalResponseDialogue1();
+				}
+				
+				else if (finalResponseDeterminer == 5)
+				{
+					finalResponseDialogue3();
+				}
+				
+				else 
+				{
+					finalResponseDialogue2();
+				}
+			}
+			
+			//Perfect response dialogue
+			function finalResponseDialogue1()
+			{
+				alert("Thanks for your details");
+				alert("You fool");
+				alert("Hahaha");
+				alert("Hahahahahaha");
+				alert("Hahahahahahahahahahaha");
+				alert("I lied");
+				alert("There are no free robux");
+				alert("Hahaha");
+				alert("Hahahahahaha");
+				alert("Hahahahahahahahahahaha");
+			}
+			
+			//Middling response dialogue
+			function finalResponseDialogue2()
+			{
+				alert("You gave me... some correct details?");
+				alert("That's better than nothing");
+				alert("You fool");
+				alert("Hahaha");
+				alert("Hahahahahaha");
+				alert("Hahahahahahahahahahaha");
+				alert("I lied");
+				alert("There are no free robux");
+				alert("Hahaha");
+				alert("Hahahahahaha");
+				alert("Hahahahahahahahahahaha");
+			}
+			
+			//Garbage response dialogue
+			function finalResponseDialogue3()
+			{
+				alert("Your answers were all fake");
+				alert("Your EIR code was invalid");
+				alert("Your credit card details had letters");
+				alert("That does not even make any sense");
+				alert("Okay");
+				alert("Screw this");
+				alert("I have better things to do");
+				alert("Bye, loser");
+			}
+			
+			//Responds to form with alerts
 			function respondToForm()
 			{
-				
-			}
-		
-		
-		
+				introDialogue();
+				alert("Your first name is");
+				fnameDialogue();
+				alert("Your last name is");
+				lnameDialogue();
+				alert("Your eir code is");
+				eirCodeDialogue();
+				alert("Your credit card number is");
+				cardNoDialogue();
+				alert("Your credit card pin is");
+				cardPinDialogue();
+				finalResponse();
+			}			
+
 		</script>
-	
-	
+		
 	</body>
 
 </html>
